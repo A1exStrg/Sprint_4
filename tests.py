@@ -62,8 +62,9 @@ class TestBooksCollector:
         collector = BooksCollector()
         collector.add_new_book(book_name)
         collector.set_book_genre(book_name, genre_name)
-        assert book_name in collector.books_genre
-        assert collector.get_book_genre(book_name) == genre_name
+        genres = collector.get_books_genre()
+        assert book_name in genres
+        assert genres[book_name] == genre_name
 
     @pytest.mark.parametrize('book_name, genre_name',
                              [
